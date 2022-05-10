@@ -4,13 +4,23 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 
-import { BrowserRouter } from "react-router-dom";
+import Employee from './pages/employee';
+import Prospect from './pages/prospect';
+import Customer from './pages/customer';
+
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
     <BrowserRouter>
-      <App />
+    <Routes>
+      <Route path="/" element={<App />} />
+      <Route path="/employees" element={<Employee/>} />
+      <Route path="/customers" element={<Customer/>} />
+      <Route path="/prospects" element={<Prospect/>} />
+      {/* <App/> */}
+    </Routes>
     </BrowserRouter>
   </React.StrictMode>
 );
