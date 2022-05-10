@@ -39,7 +39,7 @@ const Header = () => {
               textDecoration: 'none',
             }}
           >
-            CompanyCrm
+            BEESO
           </Typography>
 
           

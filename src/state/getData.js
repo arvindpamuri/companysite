@@ -1,22 +1,20 @@
 import { useState, useEffect } from 'react';
 
-function useGetData(tablename) {
+function useGetData(url) {
 
-  const [data, setData] = useState({});
+  const [data, setData] = useState([]);
 
   useEffect(() => {
 
-    const fetchData = async (tablename) => {
+    const fetchData = async (url) => {
       
-      if(tablename !== "") {
-        let url = "https://company11.azurewebsites.net/employees/";
+      if(url !== "") {
         setData([])
 
         try {
           const response = await fetch(url);
           const fetchData = await response.json();
 
-          console.log(fetchData)
           setData(fetchData);
 
         }
@@ -26,8 +24,8 @@ function useGetData(tablename) {
       }
     }
 
-    fetchData(tablename);
-  }, [tablename]);
+    fetchData(url);
+  }, [url]);
 
   return data;
 }
