@@ -63,7 +63,7 @@ export default function ShowTable(props) {
         <TableCell align="center" sx={{color: 'whitesmoke', fontWeight: 'bold', fontSize:'25px'}}>
           <Button onClick={() => deleteRecord(row[0])}><DeleteIcon/></Button>
         </TableCell>
-        
+      
     </TableRow>
     );
   }
