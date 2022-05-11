@@ -1,10 +1,9 @@
-import React, { useState } from 'react';
+import React from 'react';
 import useGetData from './../state/getData'
 
 import './page.css';
-import {Box, Button, Item} from '@mui/material';
+import {Box} from '@mui/material';
 import Card from '@mui/material/Card';
-import CardActions from '@mui/material/CardActions';
 import CardContent from '@mui/material/CardContent';
 import Typography from '@mui/material/Typography';
 
@@ -15,16 +14,11 @@ import TableContainer from '@mui/material/TableContainer';
 import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
-import DeleteIcon from '@mui/icons-material/Delete';
 
 
 
 import Header from '../components/header';
-import Insert from '../components/insert';
-import ShowPeople from  '../components/showpeople';
-import InsertEmployee from '../components/insert';
 import { useParams } from 'react-router-dom';
-import { color, textAlign } from '@mui/system';
 
 
 function PrintHead({row}) {
@@ -53,7 +47,6 @@ function PrintHead({row}) {
 const ShowDetails = () => {
 
     const params = useParams();
-    const [employee, setEmployee] = useState([]);
 
     let url = "https://company12.azurewebsites.net/" + params.table + "/" + params.id;
     let data;
@@ -68,7 +61,7 @@ const ShowDetails = () => {
     }
 
     let alternate_table;
-    if(params.table=="employees")
+    if(params.table==="employees")
         alternate_table='customers';
     else
         alternate_table='employees';
@@ -144,7 +137,7 @@ const ShowDetails = () => {
 
                 <div>
                     {(() => {
-                        if (params.table == "employees") {
+                        if (params.table === "employees") {
                         return (
                             <h1>Employee's Customers</h1>
                         )

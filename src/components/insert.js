@@ -3,7 +3,7 @@ import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import Modal from '@mui/material/Modal';
-import {FormControl, InputLabel, FormHelperText, Input} from '@mui/material/';
+import {FormControl, InputLabel, Input} from '@mui/material/';
 
 import postData from './../state/postData';
 
@@ -29,11 +29,10 @@ export default function InsertEmployee() {
   const [name, setName] = useState("");
   const [dept, setDept] = useState("");
   const [phone, setPhone] = useState("");
-  const [postResult, setPostResult] = useState();
 
   async function submitDetails() {
 
-    if(name.length==0 || dept.length==0 || phone.length==0) {
+    if(name.length===0 || dept.length===0 || phone.length===0) {
         alert("Form has errors.");
         return;
     }
@@ -49,14 +48,10 @@ export default function InsertEmployee() {
     if(response.ok) {
 
         alert("Successfully Added!"); 
-        // window.location.href = 'details.html';
         window.location.reload();
     }
   }
 
-  if(postResult) {
-      <div>Post Success</div>
-  }
 
   return (
     <div>

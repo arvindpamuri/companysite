@@ -1,12 +1,11 @@
-import React, { useState } from 'react';
+import React from 'react';
 import useGetData from './../state/getData'
 
 import './page.css';
-import {Box, Button, Item} from '@mui/material';
+import {Box, Button} from '@mui/material';
 
 
 import Header from '../components/header';
-import Insert from '../components/insert';
 import ShowPeople from  '../components/showpeople';
 import InsertEmployee from '../components/insert';
 

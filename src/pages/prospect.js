@@ -1,7 +1,7 @@
 
 import './page.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import { Row, Container, Card, Button }  from 'react-bootstrap';
+import { Container }  from 'react-bootstrap';
 
 const Prospect = () => {
     

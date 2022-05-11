@@ -4,10 +4,9 @@ import '@fontsource/roboto/400.css';
 import '@fontsource/roboto/500.css';
 import '@fontsource/roboto/700.css';
 
-import {Employee} from './pages/employee';
+import {Link} from 'react-router-dom';
 
 import { Container, Row, Col, Card } from 'react-bootstrap';
-import { Routes, Route, Link } from 'react-router-dom';
 
 import Box from '@mui/material/Box';
 

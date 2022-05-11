@@ -3,7 +3,7 @@ import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import Modal from '@mui/material/Modal';
-import {FormControl, InputLabel, FormHelperText, Input} from '@mui/material/';
+import {FormControl, InputLabel, Input} from '@mui/material/';
 
 import postData from './../state/postData';
 
@@ -33,7 +33,7 @@ export default function InsertCustomer() {
 
   async function submitDetails() {
 
-    if(name.length==0 || address_number.length==0 || address_street.length==0  || phone_number.length==0) {
+    if(name.length===0 || address_number.length===0 || address_street.length===0  || phone_number.length===0) {
         alert("Form has errors.");
         return;
     }
