@@ -47,14 +47,11 @@ export default function InsertCustomer() {
     };
 
     let response = await postData(body,url);
-    console.log(response.ok);
     if(response.ok) {
 
         alert("Successfully Added!"); 
         // window.location.href = 'details.html';
         window.location.reload();
-        
-
     }
   }
 
