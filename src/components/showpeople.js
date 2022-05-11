@@ -22,7 +22,6 @@ export default function ShowTable(props) {
     let url = "https://company12.azurewebsites.net/" + props.table + "/" + id;
 
     let response = await deleteData(url);
-    console.log(response);
     if(response.ok) {
 
         alert("Successfully Deleted!"); 
@@ -74,21 +73,15 @@ export default function ShowTable(props) {
   let headings = [];
   if(props.data.length > 0 ) {
 
-    console.log( props.data[0]);
     headings = Object.keys(props.data[0]);
   }
 
   let records = [];
   if(props.data.length > 0 ) {
 
-    console.log( props.data[0]);
-
 
     props.data.map((row) => records.push(Object.values(row)));
   }
-  console.log("records",records);
-
-
 
   if(!(props.data.length > 0) ) {
     return (

@@ -69,9 +69,6 @@ const ShowDetails = () => {
     let alternate_url = "https://company12.azurewebsites.net/" + params.table + "/" + params.id + "/" + alternate_table;
     let alternateData = useGetData(alternate_url);
 
-    console.log(alternate_url)
-    console.log(alternateData);
-
     let headings = [];
     if(alternateData.length > 0 ) {
 

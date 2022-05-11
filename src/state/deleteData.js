@@ -1,7 +1,6 @@
 
 async function deleteData(url) {
 
-    // console.log(JSON.stringify(postbody))
     const requestOptions = {
         method: 'DELETE',
     };

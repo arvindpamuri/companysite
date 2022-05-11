@@ -11,12 +11,8 @@ import InsertEmployee from '../components/insert';
 
 const Employee = () => {
 
-    // const [data, setData] = useState(0);
-
     let url = "https://company12.azurewebsites.net/employees/";
     const data = useGetData(url);
-    // console.log(data)
-
 
     return(
 

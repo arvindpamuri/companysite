@@ -44,7 +44,6 @@ export default function InsertEmployee() {
     };
 
     let response = await postData(body,url);
-    console.log(response.ok);
     if(response.ok) {
 
         alert("Successfully Added!"); 
