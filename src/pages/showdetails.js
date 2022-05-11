@@ -151,7 +151,7 @@ const ShowDetails = () => {
                         }
                         else {
                         return (
-                            <div>Employee handling the customer</div>
+                            <h1>Employee handling the customer</h1>
                         )
                         }
                     })()}
