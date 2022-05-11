@@ -6,8 +6,6 @@ import '@fontsource/roboto/700.css';
 
 import {Link} from 'react-router-dom';
 
-import { Container, Row, Col, Card } from 'react-bootstrap';
-
 import Box from '@mui/material/Box';
 
 
@@ -90,62 +88,7 @@ function App() {
     </Box>
     </Link>
 
-    </Box>
-
-
-      
-
-
-
-
-
-
-
-      <Container>
-        <Row>
-              <Col>
-              <Link className="link" to="/employees">
-                <Card bg='light' className='card' style={{ width: '18rem' }}>
-                  <Card.Body>
-                    <Card.Title>Employee</Card.Title>
-                    <Card.Text>
-                      Get employee details in the company.
-                    </Card.Text>
-                  </Card.Body>
-                </Card>
-                </Link>
-              </Col>
-              <Col>
-              <Link className="link" to="/customers">
-                <Card bg='light' className='card' style={{ width: '18rem' }}>
-                  <Card.Body>
-                    <Card.Title>Customer</Card.Title>
-                    <Card.Text>
-                    Get customer details of the company.
-                    </Card.Text>
-                  </Card.Body>
-                </Card>
-              </Link>
-              </Col>
-
-            <Col>
-            <Link className="link" to="/prospects">
-              <Card bg='light' className='card' style={{ width: '18rem' }}>
-                <Card.Body>
-                  <Card.Title> Prospect </Card.Title>
-                  <Card.Text>
-                    get details of prospective customers.
-                  </Card.Text>
-                </Card.Body>
-              </Card>
-            </Link>
-            </Col>
-
-          {/* </Routes> */}
-        </Row>
-        {/* </Routes> */}
-      </Container>      
-
+    </Box>    
       
     </div>
   );
