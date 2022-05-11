@@ -38,7 +38,7 @@ export default function ShowTable(props) {
     return(
     <TableRow >
               {row.map((item) => (
-                <TableCell align="center" sx={{color: 'whitesmoke', fontWeight: 'bold', fontSize:'25px'}}>{item.toUpperCase()}</TableCell>
+                <TableCell key={item} align="center" sx={{color: 'whitesmoke', fontWeight: 'bold', fontSize:'25px'}}>{item.toUpperCase()}</TableCell>
               ))}
       <TableCell align="center" sx={{color: 'whitesmoke', fontWeight: 'bold', fontSize:'25px'}}></TableCell>
       <TableCell align="center" sx={{color: 'whitesmoke', fontWeight: 'bold', fontSize:'25px'}}></TableCell>
@@ -53,7 +53,7 @@ export default function ShowTable(props) {
     >
       
               {row.map((item) => (
-                <TableCell align="center" sx={{color: 'whitesmoke',fontSize:'15px'}}>{item}</TableCell>
+                <TableCell key={item} align="center" sx={{color: 'whitesmoke',fontSize:'15px'}}>{item}</TableCell>
               ))}
         <TableCell align="center" sx={{color: 'whitesmoke', fontWeight: 'bold', fontSize:'25px'}}>
           <Link to={`/details/${props.table}/${row[0]}`}>
@@ -63,7 +63,6 @@ export default function ShowTable(props) {
         <TableCell align="center" sx={{color: 'whitesmoke', fontWeight: 'bold', fontSize:'25px'}}>
           <Button onClick={() => deleteRecord(row[0])}><DeleteIcon/></Button>
         </TableCell>
-        
         
     </TableRow>
     );

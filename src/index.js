@@ -29,8 +29,9 @@ root.render(
 
       <Route path="/details/:table/:id" element={<ShowDetails/>} />
 
-      {/* <App/> */}
+      
     </Routes>
+    <App/>
     </BrowserRouter>
   </React.StrictMode>
 );
