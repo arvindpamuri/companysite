@@ -12,6 +12,7 @@ import DeleteIcon from '@mui/icons-material/Delete';
 import Button from '@mui/material/Button';
 
 import deleteData from './../state/deleteData';
+import Loading from './../components/loading';
 import OpenInFullIcon from '@mui/icons-material/OpenInFull';
 
 export default function ShowTable(props) {
@@ -89,10 +90,10 @@ export default function ShowTable(props) {
 
 
 
-  if(!(headings.length>0)) {
+  if(!(props.data.length > 0) ) {
     return (
-      <div><h1>Loading</h1></div>
-    )
+      <Loading/>
+    );
   }
 
   else {
