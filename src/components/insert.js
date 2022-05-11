@@ -37,7 +37,7 @@ export default function InsertEmployee() {
         alert("Form has errors.");
         return;
     }
-    let url = "https://company11.azurewebsites.net/employees/";
+    let url = "https://company12.azurewebsites.net/employees/";
     let body = {
         name: name,
         department: dept,

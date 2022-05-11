@@ -38,7 +38,7 @@ export default function InsertCustomer() {
         return;
     }
 
-    let url = "https://company11.azurewebsites.net/customers/";
+    let url = "https://company12.azurewebsites.net/customers/";
     let body = {
         name: name,
         address_number: address_number,

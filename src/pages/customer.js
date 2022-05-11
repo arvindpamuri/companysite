@@ -12,7 +12,7 @@ import InsertCustomer from '../components/insertCustomer';
 
 const Customer = () => {
 
-    let url = "https://company11.azurewebsites.net/customers/";
+    let url = "https://company12.azurewebsites.net/customers/";
     const data = useGetData(url);
 
     return(

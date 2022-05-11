@@ -16,15 +16,9 @@ import OpenInFullIcon from '@mui/icons-material/OpenInFull';
 
 export default function ShowTable(props) {
 
-  function showDetails() {
-
-  }
-
   async function deleteRecord(id) {
 
-    let url = "https://company11.azurewebsites.net/" + props.table + "/" + id;
-
-    console.log("url-----",url);
+    let url = "https://company12.azurewebsites.net/" + props.table + "/" + id;
 
     let response = await deleteData(url);
     console.log(response);
@@ -47,6 +41,7 @@ export default function ShowTable(props) {
                 <TableCell align="center" sx={{color: 'whitesmoke', fontWeight: 'bold', fontSize:'25px'}}>{item.toUpperCase()}</TableCell>
               ))}
       <TableCell align="center" sx={{color: 'whitesmoke', fontWeight: 'bold', fontSize:'25px'}}></TableCell>
+      <TableCell align="center" sx={{color: 'whitesmoke', fontWeight: 'bold', fontSize:'25px'}}></TableCell>
     </TableRow>
     );
   }
@@ -56,15 +51,20 @@ export default function ShowTable(props) {
       <TableRow
       sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
     >
+      
               {row.map((item) => (
                 <TableCell align="center" sx={{color: 'whitesmoke',fontSize:'15px'}}>{item}</TableCell>
               ))}
         <TableCell align="center" sx={{color: 'whitesmoke', fontWeight: 'bold', fontSize:'25px'}}>
-          <Button onClick={() => deleteRecord(row[0])}><DeleteIcon/></Button>
+          <Link to={`/details/${props.table}/${row[0]}`}>
+            <OpenInFullIcon/>
+          </Link>
         </TableCell>
         <TableCell align="center" sx={{color: 'whitesmoke', fontWeight: 'bold', fontSize:'25px'}}>
-          <Link ><OpenInFullIcon/></Link>
+          <Button onClick={() => deleteRecord(row[0])}><DeleteIcon/></Button>
         </TableCell>
+        
+        
     </TableRow>
     );
   }
