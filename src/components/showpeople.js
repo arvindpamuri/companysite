@@ -36,7 +36,7 @@ export default function ShowTable(props) {
 
   function PrintHead({row}) {
     return(
-    <TableRow onclick>
+    <TableRow >
               {row.map((item) => (
                 <TableCell align="center" sx={{color: 'whitesmoke', fontWeight: 'bold', fontSize:'25px'}}>{item.toUpperCase()}</TableCell>
               ))}

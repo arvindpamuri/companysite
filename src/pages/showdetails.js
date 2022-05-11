@@ -23,7 +23,7 @@ import { useParams } from 'react-router-dom';
 
 function PrintHead({row}) {
     return(
-    <TableRow onclick>
+    <TableRow >
               {row.map((item) => (
                 <TableCell align="center" sx={{color: 'whitesmoke', fontWeight: 'bold', fontSize:'25px'}}>{item.toUpperCase()}</TableCell>
               ))}
@@ -83,6 +83,8 @@ const ShowDetails = () => {
 
         alternateData.map((row) => records.push(Object.values(row)));
     }
+
+
     
     return(
 
