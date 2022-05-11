@@ -1,35 +1,27 @@
 import { useState, useEffect } from 'react';
 
-function usePostData(body) {
+async function usePostData(postbody, url) {
 
-    console.log("body----",body);
+    console.log(JSON.stringify(postbody))
+    const requestOptions = {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+        body: JSON.stringify(postbody)
+    };
 
-//   const [data, setData] = useState([]);
+    try {
+        const response = await fetch(url, requestOptions);
+        // console.log("response", response);
+        const fetchData = await response;
 
-//   useEffect(() => {
+        // console.log("fetchdata",fetchData);
+        return fetchData;
 
-//     const fetchData = async (url) => {
-      
-//       if(url !== "") {
-//         setData([])
-
-//         try {
-//           const response = await fetch(url);
-//           const fetchData = await response.json();
-
-//           setData(fetchData);
-
-//         }
-//         catch (error) {
-//           console.log(error.message);
-//         }
-//       }
-//     }
-
-//     fetchData(url);
-//   }, [url]);
-
-  return ;
+    }
+    catch (error) {
+        console.log(error.message);
+        return error;
+    }
 }
 
 export default usePostData;

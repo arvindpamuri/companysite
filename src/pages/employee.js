@@ -37,17 +37,9 @@ const Employee = () => {
                 marginTop: "50px"
             }}
             >
-                <ShowPeople data={data}/>
+                <ShowPeople data={data} table="employees"/>
             </Box>
-
-            {/* <Box
-            sx = {{
-                marginTop: "50px",
-                display: 'flex',
-                flexDirection: 'column',
-                align
-            }}
-            > */}
+            
             <Box
                 sx={{
                 display: 'flex',
@@ -57,12 +49,8 @@ const Employee = () => {
                 borderRadius: 1,
                 }}
             >
-                <Button sx={{ m: 2 }}  variant="contained">Add Employee</Button>
-                <Button sx={{ m: 2 }} variant="contained">Update Employee Info</Button>
-                <Button sx={{ m: 2 }} variant="contained">Delete Employee</Button>
+                <Button sx={{ m: 2 }} variant="contained"><InsertEmployee/></Button>
             </Box>
-
-            <InsertEmployee/>
             
         </Box>
         

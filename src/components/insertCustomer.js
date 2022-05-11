@@ -19,7 +19,7 @@ const style = {
   p: 4,
 };
 
-export default function InsertEmployee() {
+export default function InsertCustomer() {
 
   const [open, setOpen] = useState(false);
   const handleOpen = () => setOpen(true);
@@ -27,21 +27,23 @@ export default function InsertEmployee() {
 
 
   const [name, setName] = useState("");
-  const [dept, setDept] = useState("");
-  const [phone, setPhone] = useState("");
-  const [postResult, setPostResult] = useState();
+  const [address_number, setAddress_number] = useState("");
+  const [address_street, setAddress_street] = useState("");
+  const [phone_number, setPhone_number] = useState();
 
   async function submitDetails() {
 
-    if(name.length==0 || dept.length==0 || phone.length==0) {
+    if(name.length==0 || address_number.length==0 || address_street.length==0  || phone_number.length==0) {
         alert("Form has errors.");
         return;
     }
-    let url = "https://company11.azurewebsites.net/employees/";
+
+    let url = "https://company11.azurewebsites.net/customers/";
     let body = {
         name: name,
-        department: dept,
-        phone: phone
+        address_number: address_number,
+        address_street: address_street,
+        phone_number: phone_number
     };
 
     let response = await postData(body,url);
@@ -51,16 +53,14 @@ export default function InsertEmployee() {
         alert("Successfully Added!"); 
         // window.location.href = 'details.html';
         window.location.reload();
-    }
-  }
+        
 
-  if(postResult) {
-      <div>Post Success</div>
+    }
   }
 
   return (
     <div>
-      <Button onClick={handleOpen} sx={{color:"white"}}>Add Employee</Button>
+      <Button onClick={handleOpen} sx={{color:"white"}}>Add Customer</Button>
       <Modal
         open={open}
         onClose={handleClose}
@@ -81,18 +81,26 @@ export default function InsertEmployee() {
             </FormControl>
 
             <FormControl sx={{marginTop: "20px"}}>
-            <InputLabel htmlFor="my-input">Department</InputLabel>
+            <InputLabel htmlFor="my-input">address_number</InputLabel>
             <Input id="my-input" aria-describedby="my-helper-text" 
-                onChange={e => setDept(e.target.value)}
-                value={dept}
+                onChange={e => setAddress_number(e.target.value)}
+                value={address_number}
+            />
+            </FormControl>
+
+            <FormControl sx={{marginTop: "20px"}}>
+            <InputLabel htmlFor="my-input">Address Street</InputLabel>
+            <Input id="my-input" aria-describedby="my-helper-text" 
+                onChange={e => setAddress_street(e.target.value)}
+                value={address_street}    
             />
             </FormControl>
 
             <FormControl sx={{marginTop: "20px"}}>
             <InputLabel htmlFor="my-input">Phone Number</InputLabel>
             <Input id="my-input" aria-describedby="my-helper-text" 
-                onChange={e => setPhone(e.target.value)}
-                value={phone}    
+                onChange={e => setPhone_number(e.target.value)}
+                value={phone_number}    
             />
             </FormControl>
 
