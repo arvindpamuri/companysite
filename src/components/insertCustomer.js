@@ -33,7 +33,8 @@ export default function InsertCustomer() {
 
   async function submitDetails() {
 
-    if(name.length===0 || address_number.length===0 || address_street.length===0  || phone_number.length===0) {
+    var phoneno = /^\d{10}$/;
+    if(name.length===0 || address_number.length===0 || address_street.length===0  || !(phone_number.match(phoneno)) ) {
         alert("Form has errors.");
         return;
     }

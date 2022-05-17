@@ -4,50 +4,59 @@ import '@fontsource/roboto/400.css';
 import '@fontsource/roboto/500.css';
 import '@fontsource/roboto/700.css';
 
-import Home from './pages/home';
-import Login from './pages/login'
-import { SignInButton } from './components/SignInButton';
 
 // MSAL imports
-import { useMsalAuthentication, useIsAuthenticated } from "@azure/msal-react";
-import { MsalProvider, AuthenticatedTemplate, UnauthenticatedTemplate } from "@azure/msal-react";
-import { InteractionType, InteractionRequiredAuthError } from '@azure/msal-browser';
-
+import { useIsAuthenticated } from "@azure/msal-react";
 
 import { useMsal } from "@azure/msal-react";
 import { loginRequest } from "./authConfig";
 
+import Employee from './pages/employee';
+import Prospect from './pages/prospect';
+import Customer from './pages/customer';
+import ShowDetails from './pages/showdetails';
+import Home from './pages/home';
 
-function handleLogin(instance) {
-  instance.loginPopup(loginRequest).catch(e => {
-      console.error(e);
-  });
-}
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 
 function App({pca}) {
 
-  const isAuthenticated = useIsAuthenticated();
-  console.log(isAuthenticated)
-
   const { instance } = useMsal();
+  const isAuthenticated = useIsAuthenticated();
+
+  async function authenticate() {
+
+      await instance.loginRedirect(loginRequest)
+      .catch(e => {
+          console.error(e);
+      });
+  }
+
+  if(!isAuthenticated) {
+      authenticate();
+  }
+
 
   return (
-    <MsalProvider instance={pca}>
 
-      
-      {/* <UnauthenticatedTemplate>
-        
-        <h1>This will only render if a user is not signed-in.</h1>
-        <SignInButton/>
+      <BrowserRouter>
+        <Routes>
 
-      </UnauthenticatedTemplate>
-      <AuthenticatedTemplate>
-        <h1>This will only render if a user is signed-in.</h1>
-      </AuthenticatedTemplate> */}
+          <Route path="/" element={<Home />} />
+          <Route path="/employees" element={<Employee/>} />
+          <Route path="/employees/:id" element={<ShowDetails/>} />
 
-      <Home/>
-    </MsalProvider>
+          <Route path="/customers" element={<Customer/>} />
+          <Route path="/customers/:id" element={<ShowDetails/>} />
+
+          <Route path="/prospects" element={<Prospect/>} />
+          <Route path="/prospects/:id" element={<ShowDetails/>} />
+
+          <Route path="/details/:table/:id" element={<ShowDetails/>} />
+
+        </Routes>
+        </BrowserRouter>
     
   );
 }

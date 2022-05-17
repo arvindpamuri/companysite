@@ -15,10 +15,11 @@ import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
 
-
-
 import Header from '../components/header';
 import { useParams } from 'react-router-dom';
+
+//MSAL
+import { AuthenticatedTemplate, UnauthenticatedTemplate } from "@azure/msal-react";
 
 
 function PrintHead({row}) {
@@ -42,6 +43,14 @@ function PrintHead({row}) {
     </TableRow>
     );
   }
+
+const mainCardDetails = {
+    bgcolor: 'rgb(18,18,18)',
+    width: '100%',
+    '@media (min-width: 780px)' : {
+      width: '40%'
+    }
+}
 
 
 const ShowDetails = () => {
@@ -84,97 +93,137 @@ const ShowDetails = () => {
 
     
     return(
-
-        <Box height="100vh" display="flex" flexDirection="column" 
-        sx={{
-            display: 'flex',
-            flexDirection: 'column',
-            bgcolor: '#1A2027',
-            minHeight: '100vh',
-            minWidth: '100%',
-          }}
-        >
-            <Header/>
-            <Box
-            sx={{
-                display: 'flex',
-                flexDirection: 'column',
-                alignItems: 'center',
-                bgcolor: '#1A2027',
-                minHeight: '30vh',
-                minWidth: '100%',
-                marginTop: '50px'
-              }}
-            >
-                <Card variant="outlined" sx={{width: "40%", bgcolor: 'rgb(18,18,18)'}}>
-                <CardContent sx={{ color: 'whitesmoke' }} >
-                    <Typography variant="h3" component="div" sx= {{ margin: "20px", marginBottom: "40px" }}>
-                        {params.table.slice(0,-1).toUpperCase()} DETAILS
-                    </Typography>
-
-                    { result.map((item) => (
-                        <Typography variant="h5" component="div" sx={{margin: "20px"}}>
-                        {item[0].toUpperCase()} : {item[1]}
-                        </Typography>
-                    ))}
-                </CardContent>
-                </Card>
-            </Box>
-
-            <Box
-            sx={{
-                display: 'flex',
-                flexDirection: 'column',
-                alignItems: 'center',
-                bgcolor: '#1A2027',
-                minHeight: '30vh',
-                minWidth: '100%',
-                marginTop: '100px',
-                color: "whitesmoke"
-              }}
-            >   
-
-                <div>
-                    {(() => {
-                        if (params.table === "employees") {
-                        return (
-                            <h1>Employee's Customers</h1>
-                        )
-                        }
-                        else {
-                        return (
-                            <h1>Employee handling the customer</h1>
-                        )
-                        }
-                    })()}
-                    </div>
-
-
-                <TableContainer component={Paper} 
+        <>
+            <UnauthenticatedTemplate>
+                        <Box
+                            sx={{
+                                display: 'flex',
+                                flexDirection: 'row',
+                                justifyContent: 'space-evenly',
+                                alignItems: 'center',
+                                bgcolor: '#1A2027',
+                                overflow: 'hidden',
+                                borderRadius: '12px',
+                                boxShadow: 1,
+                                color: 'black',
+                                minHeight: '100vh',
+                                minWidth: '100%',
+                            }}
+                            >
+                            <Box
+                            sx={{
+                                display: 'flex',
+                                flexDirection: { xs: 'column', md: 'row' },
+                                justifyContent: 'center',
+                                alignItems: 'center',
+                                overflow: 'hidden',
+                                borderRadius: '12px',
+                                backgroundColor: 'rgb(18,18,18)',
+                                boxShadow: 1,
+                                color: '#FFFFFF',
+                                minHeight: { xs: 233, md: 200 },
+                                minWidth: { xs: 350, md: 300 },
+                            }}
+                            > Please Login
+                            </Box>
+                        </Box>
+            </UnauthenticatedTemplate>
+            
+            <AuthenticatedTemplate>
+                <Box height="100vh" display="flex" flexDirection="column" 
                 sx={{
-                    backgroundColor: '#1A2027',
-                    color: 'white',
-                    alignSelf: 'center',
-                    marginTop: "50px"
+                    display: 'flex',
+                    flexDirection: 'column',
+                    bgcolor: '#1A2027',
+                    minHeight: '100vh',
+                    minWidth: '100%',
                 }}
                 >
-                    <Table sx={{ minWidth: 650 }} aria-label="simple table">
-                    <TableHead >
-                        <PrintHead row={headings}/>
-                    </TableHead>
+                    <Header/>
+                    <Box
+                    sx={{
+                        display: 'flex',
+                        flexDirection: 'column',
+                        alignItems: 'center',
+                        bgcolor: '#1A2027',
+                        minHeight: '30vh',
+                        minWidth: '100%',
+                        marginTop: '50px'
+                    }}
+                    >
+                        <Card variant="outlined" 
+                        sx={mainCardDetails}
+                        >
+                        <CardContent sx={{ color: 'whitesmoke' }} >
+                            <Typography variant="h3" component="div" sx= {{ margin: "20px", marginBottom: "40px" }}>
+                                {params.table.slice(0,-1).toUpperCase()} DETAILS
+                            </Typography>
 
-                    <TableBody>
-                        {records.map((record) => (
-                            <PrintRow row={record}/>
-                        ))}
-                    </TableBody>
+                            { result.map((item) => (
+                                <Typography variant="h5" component="div" sx={{margin: "20px"}}>
+                                {item[0].toUpperCase()} : {item[1]}
+                                </Typography>
+                            ))}
+                        </CardContent>
+                        </Card>
+                    </Box>
 
-                        </Table>
-        </TableContainer>
+                    <Box
+                    sx={{
+                        display: 'flex',
+                        flexDirection: 'column',
+                        alignItems: 'center',
+                        bgcolor: '#1A2027',
+                        minHeight: '30vh',
+                        minWidth: '100%',
+                        marginTop: '100px',
+                        color: "whitesmoke"
+                    }}
+                    >   
 
-            </Box>
+                        <div>
+                            {(() => {
+                                if (params.table === "employees") {
+                                return (
+                                    <h1>Employee's Customers</h1>
+                                )
+                                }
+                                else {
+                                return (
+                                    <h1>Employee handling the customer</h1>
+                                )
+                                }
+                            })()}
+                            </div>
 
-        </Box>
+
+                        <TableContainer component={Paper} 
+                        sx={{
+                            backgroundColor: '#1A2027',
+                            color: 'white',
+                            alignSelf: 'center',
+                            marginTop: "50px"
+                        }}
+                        >
+                            <Table sx={{ minWidth: 650 }} aria-label="simple table">
+                            <TableHead >
+                                <PrintHead row={headings}/>
+                            </TableHead>
+
+                            <TableBody>
+                                {records.map((record) => (
+                                    <PrintRow row={record}/>
+                                ))}
+                            </TableBody>
+
+                                </Table>
+                </TableContainer>
+
+                    </Box>
+
+                </Box>
+            </AuthenticatedTemplate>
+        </>
         
     );
 }

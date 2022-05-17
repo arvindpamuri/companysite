@@ -32,7 +32,8 @@ export default function InsertEmployee() {
 
   async function submitDetails() {
 
-    if(name.length===0 || dept.length===0 || phone.length===0) {
+    var phoneno = /^\d{10}$/;
+    if(name.length===0 || dept.length===0 || !(phone_number.match(phoneno)) ) {
         alert("Form has errors.");
         return;
     }
