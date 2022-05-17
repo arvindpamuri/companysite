@@ -4,10 +4,20 @@ import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import Button from '@mui/material/Button';
+import { useMsal } from "@azure/msal-react";
+
 
 import {Link} from 'react-router-dom';
 
+function handleLogout(instance) {
+  instance.logoutRedirect().catch(e => {
+      console.error(e);
+  });
+}
+
 const Header = () => {
+
+  const { instance } = useMsal();
 
   return (
     <AppBar position="static" sx={{
@@ -68,6 +78,12 @@ const Header = () => {
           </Box>
           </Link>
 
+          <Box sx={{  }}>
+              <Button
+                sx={{ my: 2, color: 'white', display: 'block' }}
+                onClick={() => handleLogout(instance)}
+              >Log Out</Button>
+          </Box>
           
         </Toolbar>
       </Container>
