@@ -8,16 +8,24 @@ import Employee from './pages/employee';
 import Prospect from './pages/prospect';
 import Customer from './pages/customer';
 import ShowDetails from './pages/showdetails';
+import Login from './pages/login';
+import Home from './pages/home';
 
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+
+// MSAL imports
+import { PublicClientApplication, EventType } from "@azure/msal-browser";
+import { msalConfig } from "./authConfig";
+
+export const msalInstance = new PublicClientApplication(msalConfig);
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
     <BrowserRouter>
     <Routes>
-      <Route path="/" element={<App />} />
-
+      {/* <Route path="/" element={<App  />} /> */}
+      <Route path="/" element={<App pca={msalInstance} />} />
       <Route path="/employees" element={<Employee/>} />
       <Route path="/employees/:id" element={<ShowDetails/>} />
 
@@ -28,6 +36,9 @@ root.render(
       <Route path="/prospects/:id" element={<ShowDetails/>} />
 
       <Route path="/details/:table/:id" element={<ShowDetails/>} />
+
+      {/* <Route path="/login" element={<Login/>} />
+      <Route path="/home" element={<Home/>} /> */}
 
     </Routes>
     </BrowserRouter>

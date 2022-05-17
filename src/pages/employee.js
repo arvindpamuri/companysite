@@ -9,10 +9,16 @@ import Header from '../components/header';
 import ShowPeople from  '../components/showpeople';
 import InsertEmployee from '../components/insert';
 
+//MSL
+import { useMsal, useIsAuthenticated } from "@azure/msal-react";
+
 const Employee = () => {
 
     let url = "https://company12.azurewebsites.net/employees/";
     const data = useGetData(url);
+
+    const isAuthenticated = useIsAuthenticated();
+    console.log(localStorage);
 
     return(
 
